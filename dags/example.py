@@ -7,8 +7,6 @@ path = os.environ['AIRFLOW_HOME']
 
 dag = DAG(
     'imdb_data',
-    start_date=datetime(2024, 1, 1),
-    schedule='5 4 * * *'
     )
 
 def clean_data():
