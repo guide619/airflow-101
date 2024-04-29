@@ -1,11 +1,15 @@
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
-from airflow.operators.bash import BashOperator
+from datetime import datetime
 import os
 import pandas as pd
 path = os.environ['AIRFLOW_HOME']
 
-dag = DAG('imdb_data')
+dag = DAG(
+    'imdb_data',
+    start_date=datetime(2024, 1, 1),
+    schedule='5 4 * * *'
+    )
 
 def clean_data():
     df = pd.read_csv('data/IMDB-Movie-Data.csv')
